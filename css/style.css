@@ -1,0 +1,66 @@
+/* Corps */
+*{
+    margin:0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Pixelify Sans", sans-serif;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  body{
+    height: 100vh;
+    background: #333;
+    }
+
+/* Joueur */
+.health{
+    background-color: black;
+    height: 2.2%;
+    width: 25%;
+    margin-top: 1%;
+    margin-left: 3%;
+    margin-bottom: 2%;
+    border-radius: 15px;
+    color: white;
+}
+
+p{
+    margin-left: 3%;
+}
+
+/* BG */
+.boardGame{
+    background-image: url(../img/cécilion\ background.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-size:cover;
+    position: fixed;
+}
+
+
+/* Cartes */
+.cards {
+    width: 100vw;
+    height: 45vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 6px;
+    margin-left: 5%;
+    padding: auto;
+    }
+
+.card{
+    background-image: url(../img/dosCartes.png);
+    width: 60%;
+    height: 85%;
+    border-radius: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
