@@ -44,26 +44,70 @@ const marksman2 = document.querySelector('.marksman2');
 const support2 = document.querySelector('.support2');
 
 //Permet de faire pencher la carte de 10° à droite
-function rotate10(combattants){
+let player1Counter = 0;
+let player2Counter = 0;
+
+// Ajout des valeurs d'attaque et de défense aux types de cartes
+const cardValues = {
+    fighter1: { attack: 3, defense: 2 },
+    mage1: { attack: 5, defense: 1 },
+    marksman1: { attack: 7, defense: 3 },
+    support1: { attack: 2, defense: 5 },
+
+    fighter2: { attack: 3, defense: 2 },
+    mage2: { attack: 5, defense: 1 },
+    marksman2: { attack: 7, defense: 3 },
+    support2: { attack: 2, defense: 5 }
+};
+
+function rotate10(combattants, player, cardType) {
     combattants.addEventListener('click', () => {
-        combattants.style.transform = "rotate(10deg)"
-    })
+        if ((player === 1 && player1Counter < 1) || (player === 2 && player2Counter < 2)) {
+            combattants.style.transform = "rotate(10deg)";
+
+            if (player === 1) {
+                player1Counter++;
+                console.log("Joueur 1 - Compteur: " + player1Counter);
+            } else if (player === 2) {
+                player2Counter++;
+                console.log("Joueur 2 - Compteur: " + player2Counter);
+            }
+
+            compareCards();
+        }
+    });
+
+    // Fonction pour comparer les cartes après chaque rotation
+    function compareCards() {
+        if (player1Counter === 1 && player2Counter === 1) {
+            const player1Stats = cardValues[cardType + '1'];
+            const player2Stats = cardValues[cardType + '2'];
+
+            const player1Total = player1Stats.attack + player1Stats.defense;
+            const player2Total = player2Stats.attack + player2Stats.defense;
+
+            if (player1Total > player2Total) {
+                console.log("Joueur 1 gagne !");
+            } else if (player1Total < player2Total) {
+                console.log("Joueur 2 gagne !");
+            } else {
+                console.log("Match nul !");
+            }
+        }
+    }
 }
 
-//deck1
-rotate10(fighter1)
-rotate10(mage1)
-rotate10(marksman1)
-rotate10(support1)
+// deck1
+rotate10(fighter1, 1, 'fighter');
+rotate10(mage1, 1, 'mage');
+rotate10(marksman1, 1, 'marksman');
+rotate10(support1, 1, 'support');
 
-//deck2
-rotate10(fighter2)
-rotate10(mage2)
-rotate10(marksman2)
-rotate10(support2)
-
-
-//compteurs +1 si 1 pas déclenché
+// deck2
+rotate10(fighter2, 2, 'fighter');
+rotate10(mage2, 2, 'mage');
+rotate10(marksman2, 2, 'marksman');
+rotate10(support2, 2, 'support');
 
 
 
