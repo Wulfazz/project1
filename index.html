@@ -1,113 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Jeu de tour par tour</title>
-</head>
-<body>
-    
-    <!-- plateau -->
-    <div class="boardGame">
-
-            <!-- Joueur 1 -->
-            <div class="health nexus1">
-                <p class="player1">INVOCATEUR 1 :</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jeu</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="global">
+      <button class="go">
+        <img src="img/GO.png" alt="go" />
+      </button>
+      <img src="img/victory.png" alt="" id="j1WIN" />
+      <img src="img/victory2.png" alt="" id="j2WIN" />
+      <!-- Joueur 1 -->
+      <div class="joueur1">
+        <!-- Vies J1 -->
+        <div class="viesJ1">
+            <img src="img/champignon.png" alt="" class="champignonJ1" />
+        </div>
+        <!-- Cards J1 -->
+        <div class="card1Joueur1" id="cardsJ1">
+          <img src="img/Ruby2.png" alt="" class="imgRubyJ1" />
+          <div class="card1J1Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 2 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque1J1" id="next">Attaque</button>
+              <button class="btnSpeciale1J1" id="next">Spéciale</button>
             </div>
-            <div class="cards deck1" id="category-card">
-                <div class="card fighter1" id="character-container">
-                    <div class="infos">
-                        <img id="character1" class="heads ruby1" src="img/fighters/Ruby.png" alt="Ruby">
-                        <div>
-                            <p class="nom">RUBY</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card mage1" id="character-container">
-                    <div class="infos">
-                        <img id="character1" class="heads cecilion1" src="img/Mage/cécilion.jpg" alt="Cécilion">
-                        <div>
-                            <p class="nom">CECILION</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card marksman1" id="character-container">
-                    <div class="infos">
-                        <img id="character1" class="heads wanwan" src="img/Marksman/wanwan.png" alt="Wanwan">
-                        <div>
-                            <p class="nom">WANWAN</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card support1" id="character-container">
-                    <div class="infos">
-                        <img id="character1" class="heads angela" src="img/Support/Angela.png" alt="Angela">
-                        <div>
-                            <p class="nom">ANGELA</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="bonus"></div> -->
+          </div>
+        </div>
+        <div class="card2Joueur1" id="cardsJ1">
+          <img src="img/wanwan.png" alt="" class="imgWanwanJ1" />
+          <div class="card2J1Hover">
+            <p>
+              L'Attaque permet de d'enlever 2 vies à l'adversaire (Utilisable 1
+              seule fois)
+            </p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 4 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque2J1" id="next">Attaque</button>
+              <button class="btnSpeciale2J1" id="next">Spéciale</button>
             </div>
-
-            <!-- Joueur 2 -->
-            <div class="health nexus1">
-                <p class="player1">INVOCATEUR 2 :</p>
+          </div>
+        </div>
+        <div class="card3Joueur1" id="cardsJ1">
+          <img src="img/angela.png" alt="" class="imgAngelaJ1" />
+          <div class="card3J1Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de donner une vie à son joueur (Utilisable 1
+              seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque3J1" id="next">Attaque</button>
+              <button class="btnSpeciale3J1" id="next">Spéciale</button>
             </div>
-            <div class="cards deck2" id="category-card2">
-                <div class="card fighter2" id="character-container">
-                    <div class="infos">
-                        <img id="character2" class="heads balmond" src="img/fighters/Balmond.png" alt="Balmond">
-                        <div>
-                            <p class="nom">BALMOND</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card mage2" id="character-container">
-                    <div class="infos">
-                        <img id="character2" class="heads eudora" src="img/Mage/Eudora.jpg" alt="Eudora">
-                        <div>
-                            <p class="nom">EUDORA</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card marksman2" id="character-container">
-                    <div class="infos">
-                        <img id="character2" class="heads nathan" src="img/Marksman/Nathan.png" alt="Nathan">
-                        <div>
-                            <p class="nom">NATHAN</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <div class="card support2" id="character-container">
-                    <div class="infos">
-                        <img id="character2" class="heads angela" src="img/Support/Estes.png" alt="Estes">
-                        <div>
-                            <p class="nom">ESTES</p>
-                            <img class="stats" src="img/coeur.png" alt="vie">
-                            <img class="stats" src="img/epee.png" alt="shield">
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="bonus"></div> -->
+          </div>
+        </div>
+        <div class="card4Joueur1" id="cardsJ1">
+          <img src="img/Eudora.png" alt="" class="imgEudoraJ1" />
+          <div class="card4J1Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 2 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque4J1" id="next">Attaque</button>
+              <button class="btnSpeciale4J1" id="next">Spéciale</button>
             </div>
+          </div>
+        </div>
+      </div>
+      <!-- Joueur 2 -->
+      <div class="joueur2">
+        <!-- Vies J2 -->
+        <div class="viesJ2">
+            <img src="img/champignon.png" alt="" class="champignonJ2" />
+        </div>
+        <!-- Cards J2 -->
+        <div class="card1Joueur2" id="cardsJ2">
+          <img src="img/balmond.png" alt="" class="imgBalmondJ2" />
+          <div class="card1J2Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 2 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque1J2" id="nextJ2">Attaque</button>
+              <button class="btnSpeciale1J2" id="nextJ2">Spéciale</button>
+            </div>
+          </div>
+        </div>
+        <div class="card2Joueur2" id="cardsJ2">
+          <img src="img/Nathan.png" alt="" class="imgNathanJ2" />
+          <div class="card2J2Hover">
+            <p>
+              L'Attaque permet de d'enlever 2 vies à l'adversaire (Utilisable 1
+              seule fois)
+            </p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 4 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque2J2" id="nextJ2">Attaque</button>
+              <button class="btnSpeciale2J2" id="nextJ2">Spéciale</button>
+            </div>
+          </div>
+        </div>
+        <div class="card3Joueur2" id="cardsJ2">
+          <img src="img/Estes.png" alt="" class="imgEstesJ2" />
+          <div class="card3J2Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de donner une vie à son joueur (Utilisable 1
+              seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque3J2" id="nextJ2">Attaque</button>
+              <button class="btnSpeciale3J2" id="nextJ2">Spéciale</button>
+            </div>
+          </div>
+        </div>
+        <div class="card4Joueur2" id="cardsJ2">
+          <img src="img/Cecilion.png" alt="" class="imgCecilionJ2" />
+          <div class="card4J2Hover">
+            <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
+            <p>
+              La Spéciale permet de doubler l'attaque en enlevant 2 vies à
+              l'adversaire (Utilisable 1 seule fois)
+            </p>
+            <div>
+              <button class="btnAttaque4J2" id="nextJ2">Attaque</button>
+              <button class="btnSpeciale4J2" id="nextJ2">Spéciale</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <script src="js/script.js"></script>
-</body>
+    <script src="scripts/script.js"></script>
+  </body>
 </html>

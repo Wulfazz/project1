@@ -1,122 +1,564 @@
-/* Corps */
-* {
+body {
     margin: 0;
     padding: 0;
-    border: 0;
-    box-sizing: border-box;
-    font-family: "Pixelify Sans", sans-serif;
-    list-style: none;
-    text-decoration: none;
-}
-
-body {
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .global {
     height: 100vh;
-    background: #333;
+    width: 100vw;
+    background-image: url(../img/BGboardgame.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    position: relative;
+  }
+  .go {
+    width: 20vw;
+    height: 20vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    z-index: 6;
+    background-color: transparent;
+    overflow: hidden;
+    animation: zoomInOut 2s infinite alternate;
+  }
+  @keyframes zoomInOut {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  .go img {
+    width: 15vw;
+  }
+  
+  #j1WIN {
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    display: none;
+  }
+  
+  #j2WIN {
+    width: 50vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    display: none;
+  }
+  /* #tortue {
+    position: absolute;
+    width: 80px;
+    aspect-ratio: 1.5;
+    left: 0;
+    top: 50%;
+    transform: translateX(-50%);
+    animation: deplacementDroite 2s linear;
+    display: none;
+  } */
+  
+  @keyframes deplacementDroite {
+    0% {
+      left: 20%;
+    }
+    100% {
+      left: 80%;
+    }
+  }
+  /* Joueur 1 */
+  .joueur1 {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .imgJ1 {
+    width: 20vw;
+    aspect-ratio: 921/242;
+  }
+  /* vies */
+  .viesJ1 {
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-/* Joueur */
-.health {
-    background-color: black;
-    height: 2.2%;
-    width: 25%;
-    margin-top: 1%;
-    margin-left: 3%;
-    margin-bottom: 2%;
-    border-radius: 15px;
-    color: #e3c99a;
-}
-
-p {
-    margin-left: 3%;
-}
-
-/* BG */
-.boardGame {
-    background-image: url(../img/cécilion\ background.jpg);
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    position: fixed;
-}
-
-/* Cartes */
-.cards {
-    width: 100vw;
-    height: 43vh;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 6px;
-    margin-left: 5%;
-}
-
-.card {
-    background-image: url(../img/dosCartes.png);
-    width: 60%;
-    height: 85%;
-    border-radius: 15px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 3%;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
     position: relative;
-}
-
-.deck1 .card,
-.deck1 .heads {
-    border: 2px solid red; /* La couleur rouge est ajoutée ici */
-}
-
-.deck2 .card,
-.deck2 .heads {
-    border: 2px solid blue; /* La couleur bleue est ajoutée ici */
-}
-
-.heads {
-    width: 47%;
-    height: 40%;
-    display: inline-block;
-    border-radius: 15px;
-    --s: 120px;
-    --b: 6px;
-    --g: 14px;
-    aspect-ratio: 1;
-    width: var(--s);
-    outline: calc(var(--s) / 2) solid #0009;
-    outline-offset: calc(var(--s) / -2);
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.7);
-}
-
-.heads:hover {
-    outline: var(--b) solid var(--c); /* La variable --c n'est pas définie, vérifiez si elle doit être ajoutée */
-    outline-offset: var(--g);
-    transform: scale(1.5);
-}
-
-.stats {
-    height: 20%;
-    width: 40%;
-    margin-left: 20%;
-}
-
-.nom {
-    background-color: #333;
-    border-radius: 5px;
-    color: #e3c99a;
-    text-align: center;
-    font-weight: bold;
-}
-
-.infos {
+  }
+  
+  .champignonJ1 {
+    height: 3vh;
+    margin: 5px;
+  }
+  
+  /* cartesJ1 */
+  .card1Joueur1 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #711414;
+    border-radius: 10%;
     display: flex;
-    justify-content: flex-start; /* Je suppose que vous vouliez dire "flex-start" pour aligner en haut */
-    align-items: flex-start; /* Je suppose que vous vouliez dire "flex-start" pour aligner en haut */
-}
+    justify-content: center;
+    box-shadow: 2px 2px 2px #711414;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgRubyJ1 {
+    height: 20vh;
+    margin: auto;
+    transform: scaleX(-1);
+  }
+  .card1J1Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card1Joueur1:hover .card1J1Hover {
+    opacity: 0.8;
+  }
+  .card1J1Hover div {
+    display: flex;
+  }
+  .card1J1Hover button {
+    background-color: #711414;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  
+  .card2Joueur1 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #711414;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #711414;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .imgWanwanJ1 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  .card2J1Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card2Joueur1:hover .card2J1Hover {
+    opacity: 0.8;
+  }
+  .card2J1Hover div {
+    display: flex;
+  }
+  .card2J1Hover button {
+    background-color: #711414;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .card3Joueur1 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #711414;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #711414;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgAngelaJ1 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  .card3J1Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card3Joueur1:hover .card3J1Hover {
+    opacity: 0.8;
+  }
+  .card3J1Hover div {
+    display: flex;
+  }
+  .card3J1Hover button {
+    background-color: #711414;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .card4Joueur1 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #711414;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #711414;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgEudoraJ1 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  .card4J1Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card4Joueur1:hover .card4J1Hover {
+    opacity: 0.8;
+  }
+  .card4J1Hover div {
+    display: flex;
+  }
+  .card4J1Hover button {
+    background-color: #711414;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  /* Joueur2 */
+  .joueur2 {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .imgJ2 {
+    width: 20vw;
+    aspect-ratio: 921/242;
+  }
+  /* viesJ2 */
+  .viesJ2 {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .champignonJ2 {
+    height: 3vh;
+    margin: 5px;
+  }
+  /* cartesJ2 */
+  .card1Joueur2 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #19336e;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #19336e;
+    overflow: hidden;
+    position: relative;
+  }
+  .card1J2Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card1Joueur2:hover .card1J2Hover {
+    opacity: 0.8;
+  }
+  .card1J2Hover div {
+    display: flex;
+  }
+  .card1J2Hover button {
+    background-color: #19336e;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  
+  .imgBalmondJ2 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  .card2Joueur2 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #19336e;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #19336e;
+    overflow: hidden;
+    position: relative;
+  }
+  .imgNathanJ2 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  .card2J2Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card2Joueur2:hover .card2J2Hover {
+    opacity: 0.8;
+  }
+  .card2J2Hover div {
+    display: flex;
+  }
+  .card2J2Hover button {
+    background-color: #19336e;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .card3Joueur2 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #19336e;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #19336e;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .imgEstesJ2 {
+    height: 20vh;
+  }
+  .card3J2Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card3Joueur2:hover .card3J2Hover {
+    opacity: 0.8;
+  }
+  .card3J2Hover div {
+    display: flex;
+  }
+  .card3J2Hover button {
+    background-color: #19336e;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .card4Joueur2 {
+    height: 20vh;
+    width: 30vh;
+    background-image: url(../img/fond.jpeg);
+    background-position: center;
+    background-size: cover;
+    border: 2px solid #19336e;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 2px #19336e;
+    overflow: hidden;
+    position: relative;
+  }
+  .card4J2Hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    text-align: center;
+    font-size: 10px;
+  }
+  
+  .card4Joueur2:hover .card4J2Hover {
+    opacity: 0.8;
+  }
+  .card4J2Hover div {
+    display: flex;
+  }
+  .card4J2Hover button {
+    background-color: #19336e;
+    color: #f0f9f6;
+    border-radius: 10px;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    font-family: 'Press Start 2P', sans-serif;
+  }
+  .imgCecilionJ2 {
+    height: 20vh;
+    transform: scaleX(-1);
+  }
+  
+  /* Griser Joueur adverse */
+  
+  .grise {
+    filter: grayscale(100%);
+  }
