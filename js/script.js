@@ -1,57 +1,53 @@
-// 10 vies J1
+//faire apparaître les 10 vies
 document.addEventListener('DOMContentLoaded', function () {
-    let gameContainer = document.querySelector('.viesJ1');
-    let champignonOriginal = document.querySelector('.champignonJ1');
-  
-    for (var i = 0; i < 9; i++) {
-      let champignonClone = champignonOriginal.cloneNode(true);
-      gameContainer.appendChild(champignonClone);
-    }
-    disableButtons();
-  });
-  // 10 vies J2
-  document.addEventListener('DOMContentLoaded', function () {
-    let gameContainer2 = document.querySelector('.viesJ2');
-    let champignonOriginal2 = document.querySelector('.champignonJ2');
-  
-    for (var i = 0; i < 9; i++) {
-      let champignonClone2 = champignonOriginal2.cloneNode(true);
-      gameContainer2.appendChild(champignonClone2);
-    }
-    disableButtons();
-  });
-  
+  createLives('.viesJ1', '.vieJ1');
+  createLives('.viesJ2', '.vieJ2');
+});
+
+function createLives(containerSelector, originalLifeSelector) {
+  let gameContainer = document.querySelector(containerSelector);
+  let originalLife = document.querySelector(originalLifeSelector);
+
+  for (var i = 0; i < 9; i++) {
+      let lifeClone = originalLife.cloneNode(true);
+      gameContainer.appendChild(lifeClone);
+  }
+
+  disableButtons();
+}
+
   // créer tour par tour
-  
   let nombreTour = 1;
   let cardsJ1 = document.querySelectorAll('#cardsJ1');
   let cardsJ2 = document.querySelectorAll('#cardsJ2');
-  let boutonGO = document.querySelector('.go');
+  let boutonReady = document.querySelector('.ready');
   let btnNext = document.querySelectorAll('#next');
   let btnNextJ2 = document.querySelectorAll('#nextJ2');
   
   // click sur bouton lance le jeu et cacher le bouton
-  
   document.addEventListener('DOMContentLoaded', function () {
-    boutonGO.addEventListener('click', startGame);
+    boutonReady.addEventListener('click', startGame);
   });
   
   function startGame() {
-    boutonGO.style.display = 'none';
+    boutonReady.style.display = 'none';
     jeuTour();
   }
+
   btnNext.forEach((bouton) => {
     bouton.addEventListener('click', function () {
       nombreTour++;
       jeuTour();
     });
   });
+
   btnNextJ2.forEach((bouton) => {
     bouton.addEventListener('click', function () {
       nombreTour++;
       jeuTour();
     });
   });
+
   // Désactiver les button
   function disableButtons() {
     btnNext.forEach((bouton) => bouton.setAttribute('disabled', true));
@@ -62,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btnNext.forEach((bouton) => bouton.removeAttribute('disabled'));
     btnNextJ2.forEach((bouton) => bouton.removeAttribute('disabled'));
   }
+
   // lancement boucle while
   function jeuTour() {
     if (nombreTour % 2 !== 0) {
@@ -78,237 +75,223 @@ document.addEventListener('DOMContentLoaded', function () {
       btnNextJ2.forEach((bouton) => bouton.removeAttribute('disabled'));
     }
   }
+
   // ATTAQUES J1
-  let attaqueMario = document.querySelector('.btnAttaque1J1');
-  let specialeMario = document.querySelector('.btnSpeciale1J1');
-  let attaqueLuigi = document.querySelector('.btnAttaque2J1');
-  let specialeLuigi = document.querySelector('.btnSpeciale2J1');
-  let attaquePeach = document.querySelector('.btnAttaque3J1');
-  let specialePeach = document.querySelector('.btnSpeciale3J1');
-  let attaqueKemek = document.querySelector('.btnAttaque4J1');
-  let specialeKemek = document.querySelector('.btnSpeciale4J1');
+  let attaqueRuby = document.querySelector('.btnAttaque1J1');
+  let specialeRuby = document.querySelector('.btnSpeciale1J1');
+  let attaqueWanwan = document.querySelector('.btnAttaque2J1');
+  let specialeWanwan = document.querySelector('.btnSpeciale2J1');
+  let attaqueAngela = document.querySelector('.btnAttaque3J1');
+  let specialeAngela = document.querySelector('.btnSpeciale3J1');
+  let attaqueEudora = document.querySelector('.btnAttaque4J1');
+  let specialeEudora = document.querySelector('.btnSpeciale4J1');
   let gameContainer2 = document.querySelector('.viesJ2');
   
-  attaqueMario.addEventListener('click', function () {
+  attaqueRuby.addEventListener('click', function () {
     AttaqueTortue();
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    if (champignons2.length > 0) {
-      let dernierChampignon2 = champignons2[champignons2.length - 1];
-      gameContainer2.removeChild(dernierChampignon2);
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    if (vies2.length > 0) {
+      let derniervie2 = vies2[vies2.length - 1];
+      gameContainer2.removeChild(derniervie2);
     }
     checkPerdant();
   });
-  specialeMario.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    let nombreViesAEnlever = Math.min(champignons2.length, 2);
+  specialeRuby.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    let nombreViesAEnlever = Math.min(vies2.length, 2);
   
     if (nombreViesAEnlever > 0) {
       for (let i = 0; i < nombreViesAEnlever; i++) {
-        let dernierChampignon2 = champignons2[champignons2.length - 1 - i];
-        gameContainer2.removeChild(dernierChampignon2);
+        let derniervie2 = vies2[vies2.length - 1 - i];
+        gameContainer2.removeChild(derniervie2);
       }
     }
-    specialeMario.disabled = true;
+    specialeRuby.disabled = true;
     checkPerdant();
   });
-  attaqueLuigi.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    let nombreViesAEnlever = Math.min(champignons2.length, 2);
+  attaqueWanwan.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    let nombreViesAEnlever = Math.min(vies2.length, 2);
   
     if (nombreViesAEnlever > 0) {
       for (let i = 0; i < nombreViesAEnlever; i++) {
-        let dernierChampignon2 = champignons2[champignons2.length - 1 - i];
-        gameContainer2.removeChild(dernierChampignon2);
+        let derniervie2 = vies2[vies2.length - 1 - i];
+        gameContainer2.removeChild(derniervie2);
       }
     }
-    attaqueLuigi.disabled = true;
+    attaqueWanwan.disabled = true;
     checkPerdant();
   });
-  specialeLuigi.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    let nombreViesAEnlever = Math.min(champignons2.length, 4);
+  specialeWanwan.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    let nombreViesAEnlever = Math.min(vies2.length, 4);
   
     if (nombreViesAEnlever > 0) {
       for (let i = 0; i < nombreViesAEnlever; i++) {
-        let dernierChampignon2 = champignons2[champignons2.length - 1 - i];
-        gameContainer2.removeChild(dernierChampignon2);
+        let derniervie2 = vies2[vies2.length - 1 - i];
+        gameContainer2.removeChild(derniervie2);
       }
     }
-    specialeLuigi.disabled = true;
+    specialeWanwan.disabled = true;
     checkPerdant();
   });
-  attaquePeach.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    if (champignons2.length > 0) {
-      let dernierChampignon2 = champignons2[champignons2.length - 1];
-      gameContainer2.removeChild(dernierChampignon2);
+  attaqueAngela.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    if (vies2.length > 0) {
+      let derniervie2 = vies2[vies2.length - 1];
+      gameContainer2.removeChild(derniervie2);
     }
     checkPerdant();
   });
-  specialePeach.addEventListener('click', function () {
-    let champignonsJ1 = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let nouveauChampignonJ1 = document.createElement('div');
-    nouveauChampignonJ1.className = 'champignonJ1';
-    document.querySelector('.viesJ1').appendChild(nouveauChampignonJ1);
-    specialePeach.disabled = true;
+  specialeAngela.addEventListener('click', function () {
+    let viesJ1 = document.querySelectorAll('.viesJ1 .vieJ1');
+    let nouveauvieJ1 = document.createElement('div');
+    nouveauvieJ1.className = 'vieJ1';
+    document.querySelector('.viesJ1').appendChild(nouveauvieJ1);
+    specialeAngela.disabled = true;
     checkPerdant();
   });
-  attaqueKemek.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    if (champignons2.length > 0) {
-      let dernierChampignon2 = champignons2[champignons2.length - 1];
-      gameContainer2.removeChild(dernierChampignon2);
+  attaqueEudora.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    if (vies2.length > 0) {
+      let derniervie2 = vies2[vies2.length - 1];
+      gameContainer2.removeChild(derniervie2);
     }
     checkPerdant();
   });
-  specialeKemek.addEventListener('click', function () {
-    let champignons2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    let nombreViesAEnlever = Math.min(champignons2.length, 2);
+  specialeEudora.addEventListener('click', function () {
+    let vies2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    let nombreViesAEnlever = Math.min(vies2.length, 2);
   
     if (nombreViesAEnlever > 0) {
       for (let i = 0; i < nombreViesAEnlever; i++) {
-        let dernierChampignon2 = champignons2[champignons2.length - 1 - i];
-        gameContainer2.removeChild(dernierChampignon2);
+        let derniervie2 = vies2[vies2.length - 1 - i];
+        gameContainer2.removeChild(derniervie2);
       }
     }
-    specialeKemek.disabled = true;
+    specialeEudora.disabled = true;
     checkPerdant();
   });
+
   // ATTAQUES J2
-  let attaqueMarioJ2 = document.querySelector('.btnAttaque1J2');
-  let specialeMarioJ2 = document.querySelector('.btnSpeciale1J2');
-  let attaqueLuigiJ2 = document.querySelector('.btnAttaque2J2');
-  let specialeLuigiJ2 = document.querySelector('.btnSpeciale2J2');
-  let attaquePeachJ2 = document.querySelector('.btnAttaque3J2');
-  let specialePeachJ2 = document.querySelector('.btnSpeciale3J2');
-  let attaqueKemekJ2 = document.querySelector('.btnAttaque4J2');
-  let specialeKemekJ2 = document.querySelector('.btnSpeciale4J2');
+  let attaqueBalmond = document.querySelector('.btnAttaque1J2');
+  let specialeBalmond = document.querySelector('.btnSpeciale1J2');
+  let attaqueNathan = document.querySelector('.btnAttaque2J2');
+  let specialeNathan = document.querySelector('.btnSpeciale2J2');
+  let attaqueEstes = document.querySelector('.btnAttaque3J2');
+  let specialeEstes = document.querySelector('.btnSpeciale3J2');
+  let attaqueCecilion = document.querySelector('.btnAttaque4J2');
+  let specialeCecilion = document.querySelector('.btnSpeciale4J2');
   let gameContainer = document.querySelector('.viesJ1');
   
-  attaqueMarioJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    if (champignons.length > 0) {
-      let dernierChampignon = champignons[champignons.length - 1];
-      gameContainer.removeChild(dernierChampignon);
+  attaqueBalmond.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    if (vies.length > 0) {
+      let derniervie = vies[vies.length - 1];
+      gameContainer.removeChild(derniervie);
     }
     checkPerdant();
   });
-  specialeMarioJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let nombreViesAEnlever2 = Math.min(champignons.length, 2);
+  specialeBalmond.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    let nombreViesAEnlever2 = Math.min(vies.length, 2);
   
     if (nombreViesAEnlever2 > 0) {
       for (let i = 0; i < nombreViesAEnlever2; i++) {
-        let dernierChampignon = champignons[champignons.length - 1 - i];
-        gameContainer.removeChild(dernierChampignon);
+        let derniervie = vies[vies.length - 1 - i];
+        gameContainer.removeChild(derniervie);
       }
     }
-    specialeMarioJ2.disabled = true;
+    specialeBalmond.disabled = true;
     checkPerdant();
   });
-  attaqueLuigiJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let nombreViesAEnlever2 = Math.min(champignons.length, 2);
+  attaqueNathan.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    let nombreViesAEnlever2 = Math.min(vies.length, 2);
   
     if (nombreViesAEnlever2 > 0) {
       for (let i = 0; i < nombreViesAEnlever2; i++) {
-        let dernierChampignon = champignons[champignons.length - 1 - i];
-        gameContainer.removeChild(dernierChampignon);
+        let derniervie = vies[vies.length - 1 - i];
+        gameContainer.removeChild(derniervie);
       }
     }
-    attaqueLuigiJ2.disabled = true;
+    attaqueNathan.disabled = true;
     checkPerdant();
   });
-  specialeLuigiJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let nombreViesAEnlever2 = Math.min(champignons.length, 4);
+  specialeNathan.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    let nombreViesAEnlever2 = Math.min(vies.length, 4);
   
     if (nombreViesAEnlever2 > 0) {
       for (let i = 0; i < nombreViesAEnlever2; i++) {
-        let dernierChampignon = champignons[champignons.length - 1 - i];
-        gameContainer.removeChild(dernierChampignon);
+        let derniervie = vies[vies.length - 1 - i];
+        gameContainer.removeChild(derniervie);
       }
     }
-    specialeLuigiJ2.disabled = true;
+    specialeNathan.disabled = true;
     checkPerdant();
   });
-  attaquePeachJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    if (champignons.length > 0) {
-      let dernierChampignon = champignons[champignons.length - 1];
-      gameContainer.removeChild(dernierChampignon);
+  attaqueEstes.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    if (vies.length > 0) {
+      let derniervie = vies[vies.length - 1];
+      gameContainer.removeChild(derniervie);
     }
     checkPerdant();
   });
-  specialePeachJ2.addEventListener('click', function () {
-    let champignonsJ2 = document.querySelectorAll('.viesJ2 .champignonJ2');
-    let nouveauChampignonJ2 = document.createElement('div');
-    nouveauChampignonJ2.className = 'champignonJ2';
-    document.querySelector('.viesJ2').appendChild(nouveauChampignonJ2);
-    specialePeachJ2.disabled = true;
+  specialeEstes.addEventListener('click', function () {
+    let viesJ2 = document.querySelectorAll('.viesJ2 .vieJ2');
+    let nouveauvieJ2 = document.createElement('div');
+    nouveauvieJ2.className = 'vieJ2';
+    document.querySelector('.viesJ2').appendChild(nouveauvieJ2);
+    specialeEstes.disabled = true;
     checkPerdant();
   });
-  attaqueKemekJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    if (champignons.length > 0) {
-      let dernierChampignon = champignons[champignons.length - 1];
-      gameContainer.removeChild(dernierChampignon);
+  attaqueCecilion.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    if (vies.length > 0) {
+      let derniervie = vies[vies.length - 1];
+      gameContainer.removeChild(derniervie);
     }
     checkPerdant();
   });
-  specialeKemekJ2.addEventListener('click', function () {
-    let champignons = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let nombreViesAEnlever2 = Math.min(champignons.length, 2);
+  specialeCecilion.addEventListener('click', function () {
+    let vies = document.querySelectorAll('.viesJ1 .vieJ1');
+    let nombreViesAEnlever2 = Math.min(vies.length, 2);
   
     if (nombreViesAEnlever2 > 0) {
       for (let i = 0; i < nombreViesAEnlever2; i++) {
-        let dernierChampignon = champignons[champignons.length - 1 - i];
-        gameContainer.removeChild(dernierChampignon);
+        let derniervie = vies[vies.length - 1 - i];
+        gameContainer.removeChild(derniervie);
       }
     }
-    specialeKemekJ2.disabled = true;
+    specialeCecilion.disabled = true;
     checkPerdant();
   });
   
   // Declacrer le Gagnant et le Perdant
   function checkPerdant() {
-    let champignonsJ1 = document.querySelectorAll('.viesJ1 .champignonJ1');
-    let champignonsJ2 = document.querySelectorAll('.viesJ2 .champignonJ2');
+    let viesJ1 = document.querySelectorAll('.viesJ1 .vieJ1');
+    let viesJ2 = document.querySelectorAll('.viesJ2 .vieJ2');
     let j1WIN = document.querySelector('#j1WIN');
     let j2WIN = document.querySelector('#j2WIN');
   
-    if (champignonsJ1.length === 0) {
+    if (viesJ1.length === 0) {
       console.log('Joueur 1 a perdu !');
       j2WIN.style.display = 'block';
       enleverGrise(cardsJ2);
       disableButtons();
     }
   
-    if (champignonsJ2.length === 0) {
+    if (viesJ2.length === 0) {
       console.log('Joueur 2 a perdu !');
       j1WIN.style.display = 'block';
       enleverGrise(cardsJ1);
       disableButtons();
     }
   }
+
   // enlever cartes grise
   function enleverGrise(cards) {
     cards.forEach((card) => card.classList.remove('grise'));
   }
-  //  attaque tortue
-  // let tortue = document.getElementById('tortue');
-  // tortue.style.display = 'none'; // Assurez-vous que la tortue est initialement cachée
-  
-  // function AttaqueTortue() {
-  //   tortue.style.display = 'block';
-  //   tortue.classList.add('tortueAnimation');
-  
-  //   // Ajouter un gestionnaire d'événements pour détecter la fin de l'animation
-  //   tortue.addEventListener(
-  //     'animationend',
-  //     function () {
-  //       tortue.style.display = 'none';
-  //     },
-  //     { once: true }
-  //   ); // Une fois l'événement déclenché, retire automatiquement le gestionnaire d'événements
-  // }

@@ -5,30 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jeu</title>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
-    <div class="global">
-      <button class="go">
-        <img src="img/GO.png" alt="go" />
+
+    <div class="boardGame">
+      <!-- Bouton Go -->
+      <button class="ready">
+        <img src="img/GO.png" alt="Ready" />
       </button>
+
+      <!-- Victoires selon joueur -->
       <img src="img/victory.png" alt="" id="j1WIN" />
       <img src="img/victory2.png" alt="" id="j2WIN" />
+
       <!-- Joueur 1 -->
       <div class="joueur1">
+
         <!-- Vies J1 -->
         <div class="viesJ1">
-            <img src="img/champignon.png" alt="" class="champignonJ1" />
+            <img src="img/vie.png" alt="" class="vieJ1" />
         </div>
-        <!-- Cards J1 -->
-        <div class="card1Joueur1" id="cardsJ1">
-          <img src="img/Ruby2.png" alt="" class="imgRubyJ1" />
-          <div class="card1J1Hover">
+
+        <!-- Deck J1 -->
+
+        <!-- Card1 -->
+        <div class="deck1" id="cardsJ1">
+          <img src="img/Ruby2.png" alt="" class="persos1" />
+          <div class="deck1Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de doubler l'attaque en enlevant 2 vies à
@@ -40,9 +43,11 @@
             </div>
           </div>
         </div>
-        <div class="card2Joueur1" id="cardsJ1">
-          <img src="img/wanwan.png" alt="" class="imgWanwanJ1" />
-          <div class="card2J1Hover">
+
+        <!-- Card2 -->
+        <div class="deck1" id="cardsJ1">
+          <img src="img/wanwan.png" alt="" class="persos1" />
+          <div class="deck1Hover">
             <p>
               L'Attaque permet de d'enlever 2 vies à l'adversaire (Utilisable 1
               seule fois)
@@ -57,9 +62,11 @@
             </div>
           </div>
         </div>
-        <div class="card3Joueur1" id="cardsJ1">
-          <img src="img/angela.png" alt="" class="imgAngelaJ1" />
-          <div class="card3J1Hover">
+
+        <!-- Card3 -->
+        <div class="deck1" id="cardsJ1">
+          <img src="img/angela.png" alt="" class="persos1" />
+          <div class="deck1Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de donner une vie à son joueur (Utilisable 1
@@ -71,9 +78,11 @@
             </div>
           </div>
         </div>
-        <div class="card4Joueur1" id="cardsJ1">
-          <img src="img/Eudora.png" alt="" class="imgEudoraJ1" />
-          <div class="card4J1Hover">
+
+        <!-- Card4 -->
+        <div class="deck1" id="cardsJ1">
+          <img src="img/Eudora.png" alt="" class="persos1" />
+          <div class="deck1Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de doubler l'attaque en enlevant 2 vies à
@@ -86,16 +95,21 @@
           </div>
         </div>
       </div>
+
       <!-- Joueur 2 -->
       <div class="joueur2">
+
         <!-- Vies J2 -->
         <div class="viesJ2">
-            <img src="img/champignon.png" alt="" class="champignonJ2" />
+            <img src="img/vie.png" alt="" class="vieJ2" />
         </div>
-        <!-- Cards J2 -->
-        <div class="card1Joueur2" id="cardsJ2">
-          <img src="img/balmond.png" alt="" class="imgBalmondJ2" />
-          <div class="card1J2Hover">
+
+        <!-- Deck2 -->
+
+        <!-- Card1 -->
+        <div class="deck2" id="cardsJ2">
+          <img src="img/balmond.png" alt="" class="persos2" />
+          <div class="deck2Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de doubler l'attaque en enlevant 2 vies à
@@ -107,9 +121,11 @@
             </div>
           </div>
         </div>
-        <div class="card2Joueur2" id="cardsJ2">
-          <img src="img/Nathan.png" alt="" class="imgNathanJ2" />
-          <div class="card2J2Hover">
+
+        <!-- Card2 -->
+        <div class="deck2" id="cardsJ2">
+          <img src="img/Nathan.png" alt="" class="persos2" />
+          <div class="deck2Hover">
             <p>
               L'Attaque permet de d'enlever 2 vies à l'adversaire (Utilisable 1
               seule fois)
@@ -124,9 +140,11 @@
             </div>
           </div>
         </div>
-        <div class="card3Joueur2" id="cardsJ2">
-          <img src="img/Estes.png" alt="" class="imgEstesJ2" />
-          <div class="card3J2Hover">
+
+        <!-- Card3 -->
+        <div class="deck2" id="cardsJ2">
+          <img src="img/Estes.png" alt="" class="persos2" />
+          <div class="deck2Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de donner une vie à son joueur (Utilisable 1
@@ -138,9 +156,11 @@
             </div>
           </div>
         </div>
-        <div class="card4Joueur2" id="cardsJ2">
-          <img src="img/Cecilion.png" alt="" class="imgCecilionJ2" />
-          <div class="card4J2Hover">
+
+        <!-- Card4 -->
+        <div class="deck2" id="cardsJ2">
+          <img src="img/Cecilion.png" alt="" class="persos2" />
+          <div class="deck2Hover">
             <p>L'Attaque permet de d'enlever une vie à l'adversaire</p>
             <p>
               La Spéciale permet de doubler l'attaque en enlevant 2 vies à
@@ -152,8 +172,11 @@
             </div>
           </div>
         </div>
+
       </div>
+
     </div>
+    
     <script src="js/script.js"></script>
   </body>
 </html>
